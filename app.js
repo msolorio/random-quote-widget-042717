@@ -23,14 +23,11 @@ function getQuote() {
 
   $.ajax(settings)
     .done(function(data) {
-      console.log('data', data);
       displayQuote(data);
     })
     .fail(function(error) {
-      console.log('error', error);
-    })
-    .always(function() {
-      //
+      console.error('status:', error.status);
+      console.error(JSON.parse(error.responseText).message);
     });
 };
 
